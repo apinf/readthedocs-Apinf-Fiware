@@ -60,14 +60,14 @@ APInf API management
 
 Why use APInf API management? If you have APIs and you are looking for additional control on API access, API documentation and analytics in one package, this is for you.
 
-The APInf platform offers a comprehensive tool for API management. Building on API Umbrella, it provides enhanced user interface features for API managers and consumers alike.
+The APInf platform offers a comprehensive tool for API management. Building on APInf Umbrella, it provides enhanced user interface features for API managers and consumers alike.
 
 For API consumers APInf provides simple key management, key usage analytics and API discovery along with API documentation. Managers have simplified workflow for common tasks, such as key management, rate limiting and viewing API usage analytics.
 
 
 Basic Architecture
 ------------------
-APInf API management is composed of two main components; APInf platform and proxy. The proxy in use is API umbrella and it is controlled via APInf platform UI, no need to touch the Umbrella directly, unless you really, really know what you are doing. 
+APInf API management is composed of two main components; APInf platform and proxy. The proxy in use is APInf umbrella and it is controlled via APInf platform UI, no need to touch the Umbrella directly, unless you really, really know what you are doing. 
 
 
 Roadmap
