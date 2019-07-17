@@ -1,7 +1,7 @@
 .. APInf API management documentation master file, created by
    sphinx-quickstart on Thu Jan 24 12:34:27 2019.
 
-APInf - API management for everyone
+APInf - API management
 ========================================
 
 We are proud to be part of `FIWARE <https://www.fiware.org>`_ thus the look and feel. 
@@ -55,7 +55,7 @@ Easy way to test the APInf platform is to try our `SaaS <https://apinf.io>`_
 Check `this video <https://www.youtube.com/watch?v=yCR6pCnTm5w>`_
 
 Tenant Manager UI
------------------
+=================
 
 GENERAL
 
@@ -94,6 +94,8 @@ Navigate to Tenant UI, click Add, and fill in the details:
 
 Hit Save. Request should complete and you should get a message saying things are ok:
 
+.. image:: images/ten2.png
+
 **RETRIEVING A TOKEN MANUALLY**
 
 Go to authorisation and provide a password. If all goes fine, token is retrieved:
@@ -106,20 +108,23 @@ Two options exist: password & username method or refresh token. We recommend to 
 
 curl -v https://accounts.yyy.zzz.cloud/oauth2/password -d "grant_type=refresh_token&client_id=${TOKEN_SERVICE_CLIENT_ID}&client_secret=${TOKEN_SERVICE_CLIENT_SECRET}&refresh_token=${REFRESH_TOKEN}" -H "application/x-www-form-urlencoded"
 
-    TOKEN_SERVICE_CLIENT_ID` and `TOKEN_SERVICE_CLIENT_SECRET` are the OAuth2 credentials assigned to your APInf application
-    and `REFRESH_TOKEN` is taken from the first response, for example the one you have from " RETRIEVING A TOKEN MANUALLY"
-    You can make the initial token requests using the `"grant_type": "password"` option, and provide username and password.
-    E.g. `{"access_token":"dbb9ef6cf61d95845600b24d8bae4aadde8c2de9","token_type":"Bearer","expires_in":3599,"refresh_token":"6773c706dc9bc1f82190e473521353e7f580ca69"}` 
+TOKEN_SERVICE_CLIENT_ID` and `TOKEN_SERVICE_CLIENT_SECRET` are the OAuth2 credentials assigned to your APInf application and `REFRESH_TOKEN` is taken from the first response, for example the one you have from " RETRIEVING A TOKEN MANUALLY" 
 
-so you have to use the value of `refresh_token` in this case
-
+You can make the initial token requests using the `"grant_type": "password"` option, and provide username and password.
+   
 **ACCESSING DATA USING TOKEN**
 
 This example uses Postman, but you can do the request with also other tools. Let's construct the request. Enter two headers: Fiware-service and Authorization. Let's try 1st with GET:
 
+.. image:: images/pm1.png
+
 What happens is that there is no data in the Tenant. Let's POST some:
 
+.. image:: images/pm2.png
+
 and try to retrieve again:
+
+.. image:: images/pm3.png
 
 Ok, that's it. If any questions, please mail us: info@apinf.io or raise and issues at github
 APInf API management

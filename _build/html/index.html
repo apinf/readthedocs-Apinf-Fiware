@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>APInf - API management for everyone &mdash; APInf API Management 0.0.1 documentation</title>
+  <title>APInf - API management &mdash; APInf API Management 0.0.1 documentation</title>
   
 
   
@@ -83,13 +83,15 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">APInf - API management for everyone</a><ul>
+<li><a class="reference internal" href="#">APInf - API management</a><ul>
 <li><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li><a class="reference internal" href="#admin-installation-standalone">Admin Installation - standalone</a></li>
 <li><a class="reference internal" href="#admin-installation-docker">Admin Installation - docker</a></li>
 <li><a class="reference internal" href="#developer-documentation-how-to-call-the-api-programmatically">Developer Documentation - how to call the API programmatically</a></li>
 <li><a class="reference internal" href="#user-documentation-how-to-use-the-gui">User Documentation - how to use the GUI</a></li>
-<li><a class="reference internal" href="#tenant-manager-ui">Tenant Manager UI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tenant-manager-ui">Tenant Manager UI</a><ul>
 <li><a class="reference internal" href="#why-use-apinf-api-management">Why use Apinf API Management?</a></li>
 <li><a class="reference internal" href="#basic-architecture">Basic Architecture</a></li>
 <li><a class="reference internal" href="#roadmap">Roadmap</a></li>
@@ -140,7 +142,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>APInf - API management for everyone</li>
+      <li>APInf - API management</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -159,8 +161,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="apinf-api-management-for-everyone">
-<h1>APInf - API management for everyone<a class="headerlink" href="#apinf-api-management-for-everyone" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="apinf-api-management">
+<h1>APInf - API management<a class="headerlink" href="#apinf-api-management" title="Permalink to this headline">¶</a></h1>
 <p>We are proud to be part of <a class="reference external" href="https://www.fiware.org">FIWARE</a> thus the look and feel.</p>
 <p>You will find the source code of this project in <a class="reference external" href="https://github.com/apinf/platform">GitHub</a>.
 You will find the documentation of this project in Read the Docs and partially in Github. We are refactoring documentation. If you feel that there is information missing, please <a class="reference external" href="https://github.com/apinf/platform/issues">raise an issue</a> at Github as we tend to get blind. We do this all day.</p>
@@ -198,8 +200,9 @@ You will find the documentation of this project in Read the Docs and partially i
 <p>Easy way to test the APInf platform is to try our <a class="reference external" href="https://apinf.io">SaaS</a></p>
 <p>Check <a class="reference external" href="https://www.youtube.com/watch?v=yCR6pCnTm5w">this video</a></p>
 </div>
+</div>
 <div class="section" id="tenant-manager-ui">
-<h2>Tenant Manager UI<a class="headerlink" href="#tenant-manager-ui" title="Permalink to this headline">¶</a></h2>
+<h1>Tenant Manager UI<a class="headerlink" href="#tenant-manager-ui" title="Permalink to this headline">¶</a></h1>
 <p>GENERAL</p>
 <p>Tenant manager is a new feature that is introduced with Apinf platfrom release 0.60.0. We are now bringing that feature out as Beta. This documentation is intended as introduction for system administrators, as you need to be able to configure additional components. Configuring additional components are not covered here.</p>
 <p>Tenant is a Context Broker concept. Context Broker on it’s own does not provide any access control. Tenant manager is an answer to that call. Basic principle is that you need to pass an Oauth token with the request, Apinf umbrella will take the token and validate that against Keyrock here is a picture that shows the overall architecture:</p>
@@ -226,26 +229,25 @@ You will find the documentation of this project in Read the Docs and partially i
 <p>Navigate to Tenant UI, click Add, and fill in the details:</p>
 <img alt="_images/add1.png" src="_images/add1.png" />
 <p>Hit Save. Request should complete and you should get a message saying things are ok:</p>
+<img alt="_images/ten2.png" src="_images/ten2.png" />
 <p><strong>RETRIEVING A TOKEN MANUALLY</strong></p>
 <p>Go to authorisation and provide a password. If all goes fine, token is retrieved:</p>
 <img alt="_images/token1.png" src="_images/token1.png" />
 <p><strong>RETRIEVING A TOKEN PROGRAMMATICALLY</strong></p>
 <p>Two options exist: password &amp; username method or refresh token. We recommend to use refresh token for production use. Example:</p>
 <p>curl -v <a class="reference external" href="https://accounts.yyy.zzz.cloud/oauth2/password">https://accounts.yyy.zzz.cloud/oauth2/password</a> -d “grant_type=refresh_token&amp;client_id=${TOKEN_SERVICE_CLIENT_ID}&amp;client_secret=${TOKEN_SERVICE_CLIENT_SECRET}&amp;refresh_token=${REFRESH_TOKEN}” -H “application/x-www-form-urlencoded”</p>
-<blockquote>
-<div>TOKEN_SERVICE_CLIENT_ID` and <cite>TOKEN_SERVICE_CLIENT_SECRET</cite> are the OAuth2 credentials assigned to your APInf application
-and <cite>REFRESH_TOKEN</cite> is taken from the first response, for example the one you have from ” RETRIEVING A TOKEN MANUALLY”
-You can make the initial token requests using the <cite>“grant_type”: “password”</cite> option, and provide username and password.
-E.g. <cite>{“access_token”:”dbb9ef6cf61d95845600b24d8bae4aadde8c2de9”,”token_type”:”Bearer”,”expires_in”:3599,”refresh_token”:”6773c706dc9bc1f82190e473521353e7f580ca69”}</cite></div></blockquote>
-<p>so you have to use the value of <cite>refresh_token</cite> in this case</p>
+<p>TOKEN_SERVICE_CLIENT_ID` and <cite>TOKEN_SERVICE_CLIENT_SECRET</cite> are the OAuth2 credentials assigned to your APInf application and <cite>REFRESH_TOKEN</cite> is taken from the first response, for example the one you have from ” RETRIEVING A TOKEN MANUALLY”</p>
+<p>You can make the initial token requests using the <cite>“grant_type”: “password”</cite> option, and provide username and password.</p>
 <p><strong>ACCESSING DATA USING TOKEN</strong></p>
 <p>This example uses Postman, but you can do the request with also other tools. Let’s construct the request. Enter two headers: Fiware-service and Authorization. Let’s try 1st with GET:</p>
+<img alt="_images/pm1.png" src="_images/pm1.png" />
 <p>What happens is that there is no data in the Tenant. Let’s POST some:</p>
+<img alt="_images/pm2.png" src="_images/pm2.png" />
 <p>and try to retrieve again:</p>
+<img alt="_images/pm3.png" src="_images/pm3.png" />
 <p>Ok, that’s it. If any questions, please mail us: <a class="reference external" href="mailto:info&#37;&#52;&#48;apinf&#46;io">info<span>&#64;</span>apinf<span>&#46;</span>io</a> or raise and issues at github
 APInf API management
 ——————–</p>
-</div>
 <div class="section" id="why-use-apinf-api-management">
 <h2>Why use Apinf API Management?<a class="headerlink" href="#why-use-apinf-api-management" title="Permalink to this headline">¶</a></h2>
 <p>If you have APIs and you are looking for additional control on API access, API documentation and analytics in one package, this is for you.</p>
