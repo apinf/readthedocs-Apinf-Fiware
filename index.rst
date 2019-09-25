@@ -108,7 +108,7 @@ APInf relies on Open API Spec documentation (previously Swagger) please see thes
 
 
 User Documentation - how to use the GUI
----------------------------------------
+=======================================
 
 Basic flow after successful installation
 
